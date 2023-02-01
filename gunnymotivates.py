@@ -14,3 +14,17 @@ api = tweepy.API(auth)
 
 tweet = random.randint(0, 63)
 api.update_status(motivations.tweets[tweet])
+
+
+# Add code to post to mastodon
+
+from mastodon import Mastodon
+
+mastodon = Mastodon(
+    client_id = secrets.Mastodon_client_id,
+    client_secret = secrets.Mastodon_client_secret,
+    access_token = secrets.Mastodon_access_token,
+    api_base_url = 'https://mastodon.social'
+)
+
+mastodon.toot(motivations.tweets[tweet])
